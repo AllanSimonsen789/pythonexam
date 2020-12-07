@@ -1,0 +1,29 @@
+<h1>This is the result page</h1>
+
+<button onclick="window.location.href='/'">Try another PICTURE</button>
+
+<h2>Result Animal: {{animal}}</h2>
+<h2>Fun Fact: {{funfact}}</h2>
+<h2>This is your URL: </h2>
+<input type="text" value="{{url}}" id="myInput" size="64">
+<button onclick="myFunction()">Copy URl</button><br/><br/>
+
+<img src="{{picurl}}" alt="resultimage" >
+<img src="{{ploturl}}" alt="plotimage" width="500" height="500">
+
+<script>
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+</script>
