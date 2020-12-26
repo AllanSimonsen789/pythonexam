@@ -11,16 +11,24 @@ labels = [ "Dog", "Horse",  "Elephant", "Butterfly", "Chicken", "Cat", "Cow", "S
 IMG_WIDTH, IMG_HEIGHT = 224, 224
 
 
-def scanpicture(filepath):
+def scanpicture(filepath, version):
+    model = ""
+    weights = ""
+    if version == "vgg":
+        model = "resources/model.json"
+        weights = "resources/weights.h5"
+    elif version == "manual":
+        model = "resources/manual_model.json"
+        weights = "resources/manual_weights.h5"
     # Load the json file that contains the model's structure
-    f = Path(settings.FILEPATH + "resources/model.json")
+    f = Path(settings.FILEPATH + model)
     model_structure = f.read_text()
 
     # Recreate the Keras model object from the json data
     model = model_from_json(model_structure)
 
     # Re-load the model's trained weights
-    model.load_weights(settings.FILEPATH + "resources/weights.h5")
+    model.load_weights(settings.FILEPATH + weights)
 
     # Load an image file to test, resizing it to 224x224 pixels (as required by this model)
     img = image.load_img(filepath, target_size=(IMG_WIDTH, IMG_HEIGHT))

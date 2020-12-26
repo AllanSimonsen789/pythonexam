@@ -1,14 +1,19 @@
 import settings
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
+from matplotlib import cm
 import seaborn as sns
+from itertools import cycle, islice
+
 
 
 def plot(df, filename):
-    fig = df.plot.bar(
+    fig = df.plot(
+        kind='bar',
         x="AnimalName",
         figsize=(20, 20),
         legend=False,
+        stacked=True,
         fontsize=26).get_figure()
 
     xlocs, xlabs = plt.xticks()

@@ -5,7 +5,7 @@ import settings
 
 connectionstring = settings.DB_URL
 
-def get_url(url):
+def get_url_data(url):
     SQLALCHEMY_DATABASE_URL = connectionstring
     engine = sqla.create_engine(SQLALCHEMY_DATABASE_URL)
     connection = engine.connect()
@@ -14,11 +14,11 @@ def get_url(url):
     Result = ResultProxy.fetchone()
     return Result
 
-def create_url(animal, picture, plot):
+def create_url(picture, resultvgg, plotvgg, resultmanual, plotmanual):
     url = uuid.uuid4().hex[:10].upper()
     SQLALCHEMY_DATABASE_URL = connectionstring
     engine = sqla.create_engine(SQLALCHEMY_DATABASE_URL)
     connection = engine.connect()
-    query = 'insert into imagerecog.urls (url, result, picturepath, plotdata) VALUES ("' + url + '", "' + animal + '", "' + picture + '", "' + plot + '");'
+    query = 'insert into imagerecog.urls (url, picturepath, resultmanual, plotdatamanual, resultvgg, plotdatavgg) VALUES("' + url + '", "' + picture + '", "' + resultmanual + '", "' + plotmanual + '", "' + resultvgg + '", "' + plotvgg + '");'
     connection.execute(query)
     return url

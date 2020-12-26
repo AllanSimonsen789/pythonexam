@@ -1,15 +1,23 @@
 <h1>This is the result page</h1>
 
 <button onclick="window.location.href='/'">Try another PICTURE</button>
-
-<h2>Result Animal: {{animal}}</h2>
-<h2>Fun Fact: {{funfact}}</h2>
-<h2>This is your URL: </h2>
+<h3>This is your URL: </h3>
 <input type="text" value="{{url}}" id="myInput" size="64">
 <button onclick="myFunction()">Copy URl</button><br/><br/>
 
-<img src="{{picurl}}" alt="resultimage" >
-<img src="{{ploturl}}" alt="plotimage" width="500" height="500">
+<img src="{{picurl}}" alt="resultimage" ><br/><br/>
+
+<h2>THIS IS VGGtransfer RESULTS WITH 94% Accuracy</h2>
+<h3>Result Animal: {{animalvgg}}</h3>
+<h3>Fun Fact: {{funfactvgg}}</h3>
+<img src="{{plotvgg}}" alt="plotimage" width="500" height="500">
+
+
+<h2>THIS IS OUR OWN MANUEL MODEL RESULTS 78% Accuracy</h2>
+<h3>Result Animal: {{animalmanual}}</h3>
+<h3>Fun Fact: {{funfactmanual}}</h3>
+<img src="{{plotmanual}}" alt="plotimage" width="500" height="500">
+
 
 <script>
 function myFunction() {

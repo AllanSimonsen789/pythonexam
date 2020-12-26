@@ -128,4 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-settings.py
+manual_weights.h5
+weights.h5
