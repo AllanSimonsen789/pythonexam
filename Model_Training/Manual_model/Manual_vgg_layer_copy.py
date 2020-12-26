@@ -1,4 +1,5 @@
-import keras,os
+import keras
+import os
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Dropout
 from keras.preprocessing.image import ImageDataGenerator
@@ -32,15 +33,20 @@ test_data = generator.flow_from_directory(
 
 
 model = Sequential()
-model.add(Conv2D(input_shape=(IMG_WIDTH, IMG_HEIGHT, 3), filters=64, kernel_size=(3, 3), padding="same", activation="relu"))
+model.add(Conv2D(input_shape=(IMG_WIDTH, IMG_HEIGHT, 3), filters=64,
+                 kernel_size=(3, 3), padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2, 2), strides=(2, 2)))
-model.add(Conv2D(filters=128, kernel_size=(3, 3), padding="same", activation="relu"))
+model.add(Conv2D(filters=128, kernel_size=(
+    3, 3), padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2, 2), strides=(2, 2)))
-model.add(Conv2D(filters=256, kernel_size=(3, 3), padding="same", activation="relu"))
+model.add(Conv2D(filters=256, kernel_size=(
+    3, 3), padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2, 2), strides=(2, 2)))
-model.add(Conv2D(filters=512, kernel_size=(3, 3), padding="same", activation="relu"))
+model.add(Conv2D(filters=512, kernel_size=(
+    3, 3), padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2, 2), strides=(2, 2)))
-model.add(Conv2D(filters=1024, kernel_size=(3, 3), padding="same", activation="relu"))
+model.add(Conv2D(filters=1024, kernel_size=(
+    3, 3), padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2, 2), strides=(2, 2)))
 model.add(Dropout(0.35))
 
@@ -60,12 +66,12 @@ model.summary()
 
 # Save model structure
 model_structure = model.to_json()
-f = Path("./my_resources/model_manual.json")
+f = Path("./my_resources/manual_model.json")
 f.write_text(model_structure)
 
 
 checkpoint = ModelCheckpoint(
-    "./my_resources/weight_manual.h5",
+    "./my_resources/manual_weights.h5",
     monitor='val_accuracy',
     verbose=1,
     save_best_only=True,
@@ -101,4 +107,3 @@ plt.ylabel("Accuracy")
 plt.xlabel("Epoch")
 plt.legend(["Accuracy", "Validation Accuracy", "loss", "Validation Loss"])
 plt.show()
-

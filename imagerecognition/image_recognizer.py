@@ -6,7 +6,8 @@ import numpy as np
 from keras.applications import vgg16
 import pandas as pd
 
-labels = [ "Dog", "Horse",  "Elephant", "Butterfly", "Chicken", "Cat", "Cow", "Sheep",  "Squirrel", "Spider"]
+labels = ["Dog", "Horse",  "Elephant", "Butterfly",
+          "Chicken", "Cat", "Cow", "Sheep",  "Squirrel", "Spider"]
 
 IMG_WIDTH, IMG_HEIGHT = 224, 224
 
@@ -15,8 +16,8 @@ def scanpicture(filepath, version):
     model = ""
     weights = ""
     if version == "vgg":
-        model = "resources/model.json"
-        weights = "resources/weights.h5"
+        model = "resources/TL_model.json"
+        weights = "resources/TL_weights.h5"
     elif version == "manual":
         model = "resources/manual_model.json"
         weights = "resources/manual_weights.h5"
@@ -52,10 +53,9 @@ def scanpicture(filepath, version):
 
     results_with_id.sort(reverse=True, key=sortByPercentage)
 
-    data_tuples = list(zip(labels,results[0]))
-    df = pd.DataFrame(data_tuples, columns=['AnimalName','Percentage'])
-    #Convert from normalized data to 100% by multiplying
+    data_tuples = list(zip(labels, results[0]))
+    df = pd.DataFrame(data_tuples, columns=['AnimalName', 'Percentage'])
+    # Convert from normalized data to 100% by multiplying
     df["Percentage"] = 100 * df["Percentage"]
 
     return (labels[results_with_id[0][0]], df)
-
