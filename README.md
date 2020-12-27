@@ -20,7 +20,7 @@ Matplotlib
 MySQL Database with sqlalchemy  
 Neural network( Keras, Tensorflow)   
 ***
-Resultatet af vores hårde, svedige, blodige, trættende, grædfærdige arbejde:  
+Resultatet af vores opgave:  
 Vores system består af en forside, hvor man kan uploade et billede, hvorefter vores system benytter vores Transfer Learning model og vores egne manuelt udregnede model. Til at clasificere hvad der er på billedet. Vi har givet vores modeller 10 klasser som de kan skelne i mellem.  
 Vores Transfer Learning model som er basseret på VGG16 modellen, har en accuracy på 94%, og vores egen manuelt udregnede model som har en accuracy på 78%.
 Når et billede er blevet uploadet og predictet af vores 2 modeller, bliver der lavet en graf for hver af modellerne ud fra resultatet. Resultatet bliver vist på en resultat side som er genereret med en random url. Den gemmes i en database og derfor kan resultatet altid hentes igen. På resultatsiden vises graferne sammen med et fact om det dyr, som hver af modellerne har predictet billedet til at være.  
